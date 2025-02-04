@@ -1,4 +1,4 @@
-package com.example.crud.models;
+package com.example.models;
 
 import jakarta.persistence.*;
 import lombok.*;
