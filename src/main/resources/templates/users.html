@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Users</title>
+    <title>User List</title>
 </head>
 <body>
 <h2>User List</h2>
-<a href="/users/new">Add User</a>
-<table border="1">
+<table>
+    <thead>
     <tr>
-        <th>ID</th>
         <th>Name</th>
         <th>Email</th>
-        <th>Action</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Actions</th>
     </tr>
+    </thead>
+    <tbody>
     <tr th:each="user : ${users}">
-        <td th:text="${user.id}"></td>
         <td th:text="${user.name}"></td>
         <td th:text="${user.email}"></td>
+        <td th:text="${user.phone}"></td>
+        <td th:text="${user.address}"></td>
         <td>
-            <a th:href="@{/users/delete/{id}(id=${user.id})}">Delete</a>
+            <a th:href="@{/users/edit/{id}(id=${user.id})}">Edit</a> |
+            <a th:href="@{/users/delete/{id}(id=${user.id})}" onclick="return confirm('Are you sure?')">Delete</a>
         </td>
     </tr>
+    </tbody>
 </table>
+
+<br>
+<a href="/users/new">Add New User</a>
 </body>
 </html>
